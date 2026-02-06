@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 imputer = joblib.load("imputer.joblib")
 scaler = joblib.load("scaler.joblib")
@@ -19,6 +19,10 @@ feature_columns = [
 ]
 
 app = Flask(__name__)
+
+@app.route("/", methods=["GET"])
+def home():
+    return render_template("index.html")
 
 @app.route("/health", methods=["GET"])
 def health():

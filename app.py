@@ -68,6 +68,7 @@ def predict_diabetes():
         return jsonify({"error": str(e), "message": "Prediction failed"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
+    print("Flask development server is running.")
 
 
